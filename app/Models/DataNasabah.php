@@ -9,4 +9,8 @@ class DataNasabah extends Model
 {
     use HasFactory;
     protected $table = 'datanasabah';
+    protected $guarded = ['id'];
+    protected $hidden = [
+        'password',
+    ];
 }

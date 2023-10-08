@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('navbar-title')
-<span class="ml-3">Data Karyawan</span>
+<span class="ml-3">Data Nasabah</span>
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -25,7 +25,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-            <a href={{route('user.create')}} class="btn btn-success mb-3 mr-2 ml-auto "><i class="fas fa-plus"></i> &nbsp;Tambah Data</a>
+            <a href={{route('client.create')}} class="btn btn-success mb-3 mr-2 ml-auto "><i class="fas fa-plus"></i> &nbsp;Tambah Data</a>
         <div class="col-12">
           <div class="card">
             <div class="card-header">
@@ -49,7 +49,7 @@
                       <td>{{$d->name}} </td>
                       <td>{{$d->email}} </td>
                       <td>
-                        <a href="{{route('user.edit', ['id' => $d->id])}}" class="btn btn-primary"><i class="fas fa-pen"> Edit</i></a>
+                        <a href="{{route('client.edit', ['id' => $d->id])}}" class="btn btn-primary"><i class="fas fa-pen"> Edit</i></a>
                         <a  data-toggle="modal" data-target="#modal-hapus" class="btn btn-danger"><i class="fas fa-trash"> Delete</i></a>
                       </td>
                     </tr>
@@ -67,7 +67,7 @@
                             <p>Apakah kamu yakin ingin menghapus data <b>{{$d->name}}</b></p>
                           </div>
                           <div class="modal-footer justify-content-between">
-                            <form action="{{route('user.delete', ['id' => $d->id])}}" method="POST">
+                            <form action="{{route('client.delete', ['id' => $d->id])}}" method="POST">
                               @csrf
                               @method('DELETE')
                               <button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>

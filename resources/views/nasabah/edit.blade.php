@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('navbar-title')
-<span class="ml-3">Data Karyawan</span>
+<span class="ml-3">Data Nasabah</span>
 @endsection
 @section('content')
 <div class="content-wrapper">
@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <form action={{ route('user.update', ['id' => $data->id])}} method="POST">
+        <form action={{ route('client.update', ['id' => $data->id])}} method="POST">
           @csrf
           @method('PUT')
         <div class="row d-flex justify-content-center">

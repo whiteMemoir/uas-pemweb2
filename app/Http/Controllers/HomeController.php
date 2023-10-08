@@ -32,8 +32,8 @@ class HomeController extends Controller
 
       if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-      $data['email'] = $request->email;
       $data['name'] = $request->name;
+      $data['email'] = $request->email;
       $data['password'] = Hash::make($request->password);
 
       User::create($data);

@@ -46,6 +46,13 @@
                     @enderror
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">Nama</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama" name="name_belakang">
+                    @error('name')
+                      <small style="color: red">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
                     <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Email" name="email">
                     @error('email')
