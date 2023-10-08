@@ -46,6 +46,9 @@
                 </tr>
                 </thead>
                 <tbody>
+                  {{-- @php
+                    dd($data)
+                  @endphp --}}
                   @if (count($data) === 0)
                      <p>Data kosong!</p> 
                   @else

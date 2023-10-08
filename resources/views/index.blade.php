@@ -46,11 +46,15 @@
                 </tr>
                 </thead>
                 <tbody>
+
                   @if (count($data) === 0)
                      <p>Data kosong!</p> 
                   @else
                   @foreach ($data as $d)
                   <tr>
+                    {{-- @php
+                    dd($d)
+                  @endphp --}}
                     <td>{{$loop->iteration}}</td>
                     <td>{{$d->nama}}</td>
                     <td>{{$d->nama_belakang}}</td>

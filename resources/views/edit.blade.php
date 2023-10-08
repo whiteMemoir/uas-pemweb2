@@ -24,8 +24,9 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <form action={{ route('user.update')}} method="POST">
+        <form action={{ route('user.update', ['id' => $data->id])}} method="POST">
           @csrf
+          @method('PUT')
         <div class="row d-flex justify-content-center">
           <!-- left column -->
           <div class="col-md-6">

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nama', 25);
             $table->string('nama_belakang', 50);
             $table->string('email', 50);
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->text('alamat');
             $table->string('telepon', 15);
             $table->string('avatar', 55)->nullable();

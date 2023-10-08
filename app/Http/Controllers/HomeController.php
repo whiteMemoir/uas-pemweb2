@@ -42,22 +42,23 @@ class HomeController extends Controller
     public function edit(Request $request, $id) {
       $data = User::find($id);
 
-      return view('edit', compact('data'));
+      return view('edit', compact(['data']));
       
     }
 
     public function update(Request $request, $id) {
+      // dd($request->all());
       $rules = [
-        'nama' => 'required|string|max:25',
-        'nama_belakang' => 'required|string|max:50',
-        'email' => 'required|email|max:50',
-        'password' => 'required|string|max:50',
-        'telepon' => 'required|string|max:15',
-        'alamat' => 'required|string',
+        'nama' => 'nullable|string|max:25',
+        'nama_belakang' => 'nullable|string|max:50',
+        'email' => 'nullable|email|max:50',
+        'password' => 'max:50',
+        'telepon' => 'nullable|string|max:15',
+        'alamat' => 'nullable|string',
         'avatar' => 'nullable|string|max:55',
       ];
 
-      $data = $request->except('_token');
+      $data = $request->except('_token', '_method');
       $validator = Validator::make($data, $rules);
       if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 

@@ -31,7 +31,7 @@ Route::post('/store-karyawan', [HomeController::class, 'store'])->name('user.sto
 Route::get('/edit-karyawan/{id}', [HomeController::class, 'edit'])->name('user.edit');
 Route::put('/update-karyawan/{id}', [HomeController::class, 'update'])->name('user.update');
 
-Route::get('/delete-karyawan/{id}', [HomeController::class, 'delete'])->name('user.delete');
+Route::delete('/delete-karyawan/{id}', [HomeController::class, 'delete'])->name('user.delete');
 
 
 Route::get('/datanasabah', [NasabahController::class, 'index'])->name('client.index');
@@ -42,7 +42,7 @@ Route::post('/store-nasabah', [NasabahController::class, 'store'])->name('client
 Route::get('/edit-nasabah/{id}', [NasabahController::class, 'edit'])->name('client.edit');
 Route::put('/update-nasabah/{id}', [NasabahController::class, 'update'])->name('client.update');
 
-Route::get('/delete-nasabah/{id}', [NasabahController::class, 'delete'])->name('client.delete');
+Route::delete('/delete-nasabah/{id}', [NasabahController::class, 'delete'])->name('client.delete');
 
 
 

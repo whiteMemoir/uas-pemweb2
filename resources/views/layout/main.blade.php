@@ -87,7 +87,7 @@
           <img src={{asset("lte/dist/img/avatar-me.jpg")}} class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">DEVY DUMMY</a>
+          <a href="#" class="d-block">Devy Mutiara Sari</a>
         </div>
       </div>
 
