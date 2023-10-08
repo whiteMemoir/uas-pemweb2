@@ -15,41 +15,61 @@ class NasabahController extends Controller
         return view('nasabah.index', compact(['data']));
     }
 
-    public function store(Request $request) {
-        dd($request->all());
-        // Define your validation rules
-        $rules = [
-            'nama' => 'required|string|max:25',
-            'nama_belakang' => 'required|string|max:50',
-            'email' => 'required|email|max:50',
-            'password' => 'required|string|max:50',
-            'telepon' => 'required|string|max:15',
-            'alamat' => 'required|string',
-        ];
-    
-        // Exclude the _token field from the request data
-        $data = $request->except('_token');
-    
-        // Create a validator instance
-        $validator = Validator::make($data, $rules);
-  
-        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-  
-        // $data['email'] = $request->email;
-        // $data['name'] = $request->name;
-        // $data['password'] = Hash::make($request->password);
-  
-        // DataNasabah::create($data);
-  
-        // return redirect()->route('user.index');
-      }
-
     public function create() {
-        return view('nasabah.create');
+      return view('nasabah.create');
+    }
+
+    public function store(Request $request) {
+      dd($request->all());
+      $rules = [
+          'nama' => 'required|string|max:25',
+          'nama_belakang' => 'required|string|max:50',
+          'email' => 'required|email|max:50',
+          'telepon' => 'required|string|max:15',
+          'alamat' => 'required|string',
+          'avatar' => 'nullable|string|max:55',
+      ];
+      $data = $request->except('_token');
+      $validator = Validator::make($data, $rules);
+      if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+      DataNasabah::create($data);
+
+      return redirect()->route('client.index');
+    }
+
+    public function edit(Request $request, $id) {
+      $data = DataNasabah::find($id);
+
+      return view('nasabah.edit', compact('data'));
+      
+    }
+
+    public function update(Request $request,$id) {
+      $rules = [
+          'nama' => 'required|string|max:25',
+          'nama_belakang' => 'required|string|max:50',
+          'email' => 'required|email|max:50',
+          'telepon' => 'required|string|max:15',
+          'alamat' => 'required|string',
+          'avatar' => 'nullable|string|max:55',
+      ];
+
+      $data = $request->except('_token');
+      $validator = Validator::make($data, $rules);
+      if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+      DataNasabah::whereId($id)->update($data);
+
+      return redirect()->route('client.index');
+    }
+
+    public function delete(Request $request, $id) {
+      $data = DataNasabah::find($id);
+
+      if ($data) {
+        $data->delete();
       }
 
-    public function edit() {
-        return view('nasabah.edit');
-      }
+      return redirect()->route('client.index');
+    }
 
 }

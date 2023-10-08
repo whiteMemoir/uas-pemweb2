@@ -24,16 +24,15 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <form action={{ route('user.update', ['id' => $data->id])}} method="POST">
+        <form action={{ route('user.update')}} method="POST">
           @csrf
-          @method('PUT')
         <div class="row d-flex justify-content-center">
           <!-- left column -->
           <div class="col-md-6">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-warning">
               <div class="card-header">
-                <h3 class="card-title">Form Tambah Data</h3>
+                <h3 class="card-title">Form Edit Data</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -41,8 +40,15 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nama</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama" name="name" value={{$data->name}}>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama" name="nama" value={{$data->nama}}>
                     @error('name')
+                      <small style="color: red">{{ $message }}</small>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Nama Belakang</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Nama Belakang" name="nama_belakang" value={{$data->nama_belakang}}>
+                    @error('nama_belakang')
                       <small style="color: red">{{ $message }}</small>
                     @enderror
                   </div>
@@ -55,32 +61,30 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password" name="password" value={{$data->password}}>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password" name="password">
                     @error('password')
                       <small style="color: red">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
+                    <label for="exampleInputEmail1">Telepon</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan No telepon" name="telepon" value={{$data->telepon}}>
+                    @error('telepon')
+                      <small style="color: red">{{ $message }}</small>
+                    @enderror
                   </div>
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  <div class="form-group">
+                    <label>Alamat</label>
+                    <textarea class="form-control" rows="3" placeholder="Tulis Alamat" name="alamat">{{$data->alamat}}</textarea>
                   </div>
+                  @error('alamat')
+                    <small style="color: red">{{ $message }}</small>
+                  @enderror
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </form>
             </div>

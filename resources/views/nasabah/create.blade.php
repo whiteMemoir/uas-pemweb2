@@ -60,13 +60,6 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Masukkan Password" name="password">
-                    @error('password')
-                      <small style="color: red">{{ $message }}</small>
-                    @enderror
-                  </div>
-                  <div class="form-group">
                     <label for="exampleInputEmail1">Telepon</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan No telepon" name="telepon">
                     @error('telepon')
@@ -80,18 +73,6 @@
                   @error('alamat')
                     <small style="color: red">{{ $message }}</small>
                   @enderror
-                  <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Pilih File</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Unggah</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <!-- /.card-body -->
 

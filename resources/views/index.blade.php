@@ -9,7 +9,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>DataTables</h1>
+          <h1>Data Karyawan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -38,16 +38,22 @@
                 <tr>
                   <th>Nomor</th>
                   <th>Nama</th>
+                  <th>Nama Belakang</th>
                   <th>Email</th>
+                  <th>Alamat</th>
+                  <th>Telepon</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach ($data as $d)
                     <tr>
-                      <td>{{$loop->iteration}} </td>
-                      <td>{{$d->name}} </td>
-                      <td>{{$d->email}} </td>
+                      <td>{{$loop->iteration}}</td>
+                      <td>{{$d->nama}}</td>
+                      <td>{{$d->nama_belakang}}</td>
+                      <td>{{$d->email}}</td>
+                      <td>{{$d->alamat}}</td>
+                      <td>{{$d->telepon}}</td>
                       <td>
                         <a href="{{route('user.edit', ['id' => $d->id])}}" class="btn btn-primary"><i class="fas fa-pen"> Edit</i></a>
                         <a  data-toggle="modal" data-target="#modal-hapus" class="btn btn-danger"><i class="fas fa-trash"> Delete</i></a>

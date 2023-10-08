@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    public function dashboard() {
-      return view('dashboard');
-    }
-
     public function index() {
       $data = User::get();
 
@@ -24,18 +20,20 @@ class HomeController extends Controller
     }
 
     public function store(Request $request) {
-      $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'name'  => 'required',
-        'password' => 'required'
-      ]);
+        $rules = [
+          'nama' => 'required|string|max:25',
+          'nama_belakang' => 'required|string|max:50',
+          'email' => 'required|email|max:50',
+          'password' => 'required|string|max:50',
+          'telepon' => 'required|string|max:15',
+          'alamat' => 'required|string',
+          'avatar' => 'nullable|string|max:55',
+      ];
 
+      $data = $request->except('_token');
+      $validator = Validator::make($data, $rules);
       if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-
-      $data['name'] = $request->name;
-      $data['email'] = $request->email;
       $data['password'] = Hash::make($request->password);
-
       User::create($data);
 
       return redirect()->route('user.index');
@@ -49,16 +47,20 @@ class HomeController extends Controller
     }
 
     public function update(Request $request, $id) {
-      $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'name'  => 'required',
-        'password' => 'nullable'
-      ]);
+      $rules = [
+        'nama' => 'required|string|max:25',
+        'nama_belakang' => 'required|string|max:50',
+        'email' => 'required|email|max:50',
+        'password' => 'required|string|max:50',
+        'telepon' => 'required|string|max:15',
+        'alamat' => 'required|string',
+        'avatar' => 'nullable|string|max:55',
+      ];
 
+      $data = $request->except('_token');
+      $validator = Validator::make($data, $rules);
       if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-      $data['email'] = $request->email;
-      $data['name'] = $request->name;
 
       if ($request->password) {
         $data['password'] = Hash::make($request->password);
